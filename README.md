@@ -1,0 +1,2 @@
+# IIDX_CONTROLLER_TEST_WIN
+beatmania IIDXの専コンの入力をRustとWindows APIで頑張って読んでみたい。
