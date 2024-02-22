@@ -1,4 +1,4 @@
-use windows::Gaming::Input::{self, Gamepad, RawGameController};
+use windows::Gaming::Input::RawGameController;
 
 fn main() {
     println!("Hello, world!");
@@ -8,6 +8,21 @@ fn main() {
         println!("RawGameController: {:?}", gamepad); // なにこれ
         println!("RawGameController Size: {:?}", gamepad.Size()); // 接続中のコントローラーの台数
 
-        // let reading = Gamepad::GetCurrentReading(&Gamepad);
+        if gamepad.Size().unwrap() > 0 {
+            println!("RawGameController At0: {:?}", gamepad.GetAt(0));
+
+            println!(
+                "RawGameController At0 Name: {:?}",
+                RawGameController::DisplayName(&gamepad.GetAt(0).unwrap())
+            );
+            println!(
+                "RawGameController PID: {:?}",
+                RawGameController::HardwareProductId(&gamepad.GetAt(0).unwrap())
+            );
+            println!(
+                "RawGameController VID: {:?}",
+                RawGameController::HardwareVendorId(&gamepad.GetAt(0).unwrap())
+            );
+        }
     }
 }
